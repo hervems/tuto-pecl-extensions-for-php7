@@ -53,3 +53,13 @@ You can find a `helloworld.php` which can be launch with `php.sh` like that:
 ```bash
 ./php.sh helloworld.php
 ```
+
+Clean the repository
+--------------------
+
+To clean your repository, you can use:
+
+```bash
+make clean
+phpize --clean
+```
