@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("hellowold", "for hellowold support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("hellowold", "enable hellowold support", "no");
+
+if (PHP_HELLOWOLD != "no") {
+	EXTENSION("hellowold", "hellowold.c", PHP_EXTNAME_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+}
+
