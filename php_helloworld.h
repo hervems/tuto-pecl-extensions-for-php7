@@ -12,7 +12,7 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author:                                                              |
+  | Author: Hervé Seignole (herve.seignole@gmail.com)                    |
   +----------------------------------------------------------------------+
 */
 
@@ -37,16 +37,6 @@ extern zend_module_entry helloworld_module_entry;
 #ifdef ZTS
 #include "TSRM.h"
 #endif
-
-/*
-  	Declare any global variables you may need between the BEGIN
-	and END macros here:
-
-ZEND_BEGIN_MODULE_GLOBALS(helloworld)
-	zend_long  global_value;
-	char *global_string;
-ZEND_END_MODULE_GLOBALS(helloworld)
-*/
 
 /* Always refer to the globals in your function as HELLOWORLD_G(variable).
    You are encouraged to rename these macros something shorter, see
