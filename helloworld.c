@@ -33,9 +33,9 @@
 zend_class_entry* helloworld_class_entry;
 
 static const zend_function_entry helloworld_class_functions[] = {
-	PHP_ME(Helloworld, __construct, NULL, ZEND_ACC_CTOR | ZEND_ACC_PUBLIC)
-	PHP_ME(Helloworld, printYourFirstAndLastName, NULL, ZEND_ACC_PUBLIC)
-	{NULL, NULL, NULL}
+    PHP_ME(Helloworld, __construct, NULL, ZEND_ACC_CTOR | ZEND_ACC_PUBLIC)
+    PHP_ME(Helloworld, printYourFirstAndLastName, NULL, ZEND_ACC_PUBLIC)
+    {NULL, NULL, NULL}
 };
 
 /* {{{ proto Helloworld Helloworld::__construct()
@@ -43,7 +43,7 @@ static const zend_function_entry helloworld_class_functions[] = {
 */
 PHP_METHOD(Helloworld, __construct)
 {
-	php_printf("Helloworld::__construct\n");
+    php_printf("Helloworld::__construct\n");
 }
 /* }}} */
 
@@ -51,37 +51,37 @@ PHP_METHOD(Helloworld, __construct)
 */
 PHP_METHOD(Helloworld, printYourFirstAndLastName)
 {
-	zval *object, *z_args, *zv_firstname, *zv_lastname;
-	HashTable *hash;
-	int arg_count;
+    zval *object, *z_args, *zv_firstname, *zv_lastname;
+    HashTable *hash;
+    int arg_count;
 
-	/* Oa for ? */
-	if (zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oa",
-		&object, helloworld_class_entry, &z_args) == FAILURE) {
-		RETURN_FALSE;
-	}
+    /* For Oa see: zend_parse_arg_impl in zend_API.c (O: object, a: array) */
+    if (zend_parse_method_parameters(ZEND_NUM_ARGS() TSRMLS_CC, getThis(), "Oa",
+        &object, helloworld_class_entry, &z_args) == FAILURE) {
+        RETURN_FALSE;
+    }
 
-	/* Grab our array */
-	hash = Z_ARRVAL_P(z_args);
+    /* Grab our array */
+    hash = Z_ARRVAL_P(z_args);
 
     /* We don't need to do anything if there aren't 2 keys */
-	if ((arg_count = zend_hash_num_elements(hash)) != 2) {
-		zend_throw_exception(zend_ce_exception, "Invalid number of arguments!", 0 TSRMLS_CC);
-	}
+    if ((arg_count = zend_hash_num_elements(hash)) != 2) {
+        zend_throw_exception(zend_ce_exception, "Invalid number of arguments!", 0 TSRMLS_CC);
+    }
 
-	if ((zv_firstname = zend_hash_str_find(hash, "firstname", sizeof("firstname") - 1)) == NULL) {
-		zend_throw_exception(zend_ce_exception, "firstname key not found!", 0 TSRMLS_CC);
-	}
+    if ((zv_firstname = zend_hash_str_find(hash, "firstname", sizeof("firstname") - 1)) == NULL) {
+        zend_throw_exception(zend_ce_exception, "firstname key not found!", 0 TSRMLS_CC);
+    }
 
-	if ((zv_lastname = zend_hash_str_find(hash, "lastname", sizeof("lastname") - 1)) == NULL) {
-		zend_throw_exception(zend_ce_exception, "lastname key not found!", 0 TSRMLS_CC);
-	}
+    if ((zv_lastname = zend_hash_str_find(hash, "lastname", sizeof("lastname") - 1)) == NULL) {
+        zend_throw_exception(zend_ce_exception, "lastname key not found!", 0 TSRMLS_CC);
+    }
 
-	php_printf("Your name is ");
-	PHPWRITE(ZSTR_VAL(zv_firstname->value.str), ZSTR_LEN(zv_firstname->value.str));
-	php_printf(" ");
-	PHPWRITE(ZSTR_VAL(zv_lastname->value.str), ZSTR_LEN(zv_lastname->value.str));
-	php_printf("\n");
+    php_printf("Your name is ");
+    PHPWRITE(ZSTR_VAL(zv_firstname->value.str), ZSTR_LEN(zv_firstname->value.str));
+    php_printf(" ");
+    PHPWRITE(ZSTR_VAL(zv_lastname->value.str), ZSTR_LEN(zv_lastname->value.str));
+    php_printf("\n");
 }
 /* }}} */
 
@@ -89,12 +89,12 @@ PHP_METHOD(Helloworld, printYourFirstAndLastName)
  */
 PHP_MINIT_FUNCTION(helloworld)
 {
-	zend_class_entry ce;
+    zend_class_entry ce;
 
-	INIT_CLASS_ENTRY(ce, PHP_HELLOWORLD_CLASSNAME, helloworld_class_functions);
-	helloworld_class_entry = zend_register_internal_class(&ce);
+    INIT_CLASS_ENTRY(ce, PHP_HELLOWORLD_CLASSNAME, helloworld_class_functions);
+    helloworld_class_entry = zend_register_internal_class(&ce);
 
-	return SUCCESS;
+    return SUCCESS;
 }
 /* }}} */
 
@@ -102,7 +102,7 @@ PHP_MINIT_FUNCTION(helloworld)
  */
 PHP_MSHUTDOWN_FUNCTION(helloworld)
 {
-	return SUCCESS;
+    return SUCCESS;
 }
 /* }}} */
 
@@ -110,25 +110,25 @@ PHP_MSHUTDOWN_FUNCTION(helloworld)
  */
 PHP_MINFO_FUNCTION(helloworld)
 {
-	php_info_print_table_start();
-	php_info_print_table_header(2, "helloworld support", "enabled");
-	php_info_print_table_end();
+    php_info_print_table_start();
+    php_info_print_table_header(2, "helloworld support", "enabled");
+    php_info_print_table_end();
 }
 /* }}} */
 
 /* {{{ helloworld_module_entry
  */
 zend_module_entry helloworld_module_entry = {
-	STANDARD_MODULE_HEADER,
-	"helloworld",
-	NULL,
-	PHP_MINIT(helloworld),
-	PHP_MSHUTDOWN(helloworld),
-	NULL,
-	NULL,
-	PHP_MINFO(helloworld),
-	PHP_HELLOWORLD_VERSION,
-	STANDARD_MODULE_PROPERTIES
+    STANDARD_MODULE_HEADER,
+    "helloworld",
+    NULL,
+    PHP_MINIT(helloworld),
+    PHP_MSHUTDOWN(helloworld),
+    NULL,
+    NULL,
+    PHP_MINFO(helloworld),
+    PHP_HELLOWORLD_VERSION,
+    STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
 
