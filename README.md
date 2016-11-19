@@ -1,23 +1,24 @@
 Tutorials to create PECL extensions for PHP 7 and more
 ======================================================
 
-This version #2 contains a class `Helloworld` with two methods:
+This version #3 contains a static class `Helloworld` with one method and
+two constants:
 
-* The `__construct` method.
-* The `printYourFirstAndLastName` method.
+* The static `getVersion` method.
+* The constant `MY_CONSTANT` which has the value 140.
+* The constant `MY_CONSTANT_STRING` which has the value `string`.
 
-The `__construct` method
-------------------------
+The static `getVersion` method
+------------------------------
 
-The constructor method displays: `Helloworld::__construct`.
+This static method displays the version of the extension: `0.1.0`.
 
-The `printYourFirstAndLastName` method
---------------------------------------
+The `MY_CONSTANT` constant
+--------------------------
 
-The `printYourFirstAndLastName` method takes as parameters an array with
-two keys :
+This constant is equal at 140 (`Helloworld::MY_CONSTANT`).
 
-* `firstname`: Your firstname.
-* `lastname` : Your lastname.
+The `MY_CONSTANT_STRING` constant
+---------------------------------
 
-And displays the message: `Your name is [firstname] [lastname]`.
+This constant is equal at `string` (`Helloworld::MY_CONSTANT_STRING`).

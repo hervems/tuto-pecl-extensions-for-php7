@@ -20,9 +20,10 @@ $extension = new ReflectionExtension('helloworld');
 print_r($extension->getClasses());
 
 $class = new ReflectionClass('Helloworld');
+$constants = $class->getConstants();
+print_r($constants);
+
 $methods = $class->getMethods();
 print_r($methods);
 
-echo $br, "\n";
-$class = new HelloWorld();
-$class->printYourFirstAndLastName(['firstname' => 'Jules', 'lastname' => 'Verne']);
+echo 'Version: ', Helloworld::getVersion(), "\n";

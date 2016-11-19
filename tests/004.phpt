@@ -1,10 +1,10 @@
 --TEST--
-Check if Helloworld::MY_CONSTANT is ok.
+Check if Helloworld::getVersion static method is ok.
 --SKIPIF--
 <?php if (!extension_loaded("helloworld")) print "skip"; ?>
 --FILE--
 <?php
-echo Helloworld::MY_CONSTANT;
+echo Helloworld::getVersion();
 ?>
 --EXPECT--
-140
+0.1.0
