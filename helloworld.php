@@ -19,7 +19,7 @@ if (!extension_loaded('helloworld')) {
 $extension = new ReflectionExtension('helloworld');
 print_r($extension->getClasses());
 
-$class = new ReflectionClass('helloworld');
+$class = new ReflectionClass('Helloworld');
 $methods = $class->getMethods();
 print_r($methods);
 
