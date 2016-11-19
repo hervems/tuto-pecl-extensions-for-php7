@@ -26,6 +26,9 @@ extern zend_module_entry helloworld_module_entry;
 
 #define PHP_HELLOWORLD_VERSION "0.1.0" /* Replace with version number for your extension */
 
+PHP_METHOD(Helloworld, __construct);
+PHP_METHOD(Helloworld, printYourFirstAndLastName);
+
 #ifdef PHP_WIN32
 #	define PHP_HELLOWORLD_API __declspec(dllexport)
 #elif defined(__GNUC__) && __GNUC__ >= 4

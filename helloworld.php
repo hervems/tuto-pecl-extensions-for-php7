@@ -16,24 +16,13 @@ if (!extension_loaded('helloworld')) {
     dl('helloworld.' . PHP_SHLIB_SUFFIX);
 }
 
-$module = 'helloworld';
+$extension = new ReflectionExtension('helloworld');
+print_r($extension->getClasses());
 
-$functions = get_extension_funcs($module);
-
-echo 'Functions available in the test extension:', $br, "\n";
-
-foreach($functions as $func) {
-    echo $func, $br, "\n";
-}
+$class = new ReflectionClass('helloworld');
+$methods = $class->getMethods();
+print_r($methods);
 
 echo $br, "\n";
-
-$function = 'confirm_' . $module . '_compiled';
-
-if (extension_loaded($module)) {
-	$str = $function($module);
-} else {
-	$str = 'Module '.$module.' is not compiled into PHP';
-}
-
-echo $str, "\n";
+$class = new HelloWorld();
+$class->printYourFirstAndLastName(['firstname' => 'Jules', 'lastname' => 'Verne']);

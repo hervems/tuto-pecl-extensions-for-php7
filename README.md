@@ -1,65 +1,23 @@
 Tutorials to create PECL extensions for PHP 7 and more
 ======================================================
 
-This version #1 contains a simple function `confirm_helloworld_compiled`.
+This version #2 contains a class `Helloworld` with two methods:
 
-Generate a skeleton
--------------------
+* The `__construct` method.
+* The `printYourFirstAndLastName` method.
 
-To generate a skeleton of a pecl extension, you can use the binary `ext_skel` presents
-in PHP sources (directory : `ext/`), example:
+The `__construct` method
+------------------------
 
-```bash
-./ext_skel helloworld
-```
+The constructor method displays: `Helloworld::__construct`.
 
-Compile the extension
----------------------
+The `printYourFirstAndLastName` method
+--------------------------------------
 
-* The first step is to use `phpize`:
+The `printYourFirstAndLastName` method takes as parameters an array with
+two keys :
 
-```bash
-phpize
-```
+* `firstname`: Your firstname.
+* `lastname` : Your lastname.
 
-* The second step is to launch `configure`:
-
-```bash
-./configure
-```
-
-* The third step is to compile it:
-
-```bash
-make
-```
-
-Launch phpt tests
------------------
-
-The last step is to launch tests:
-
-```bash
-make test
-```
-
-I added a phpt test in `tests/` directory named `tests/002.phpt`.
-
-Launch php
-----------
-
-You can find a `helloworld.php` which can be launch with `php.sh` like that:
-
-```bash
-./php.sh helloworld.php
-```
-
-Clean the repository
---------------------
-
-To clean your repository, you can use:
-
-```bash
-make clean
-phpize --clean
-```
+And displays the message: `Your name is [firstname] [lastname]`.
